@@ -2,15 +2,8 @@
 
 print("starte schach.py...")
 
-from connection.server import start_server
-from connection.client import connect_to_server
+from gui.menu import *
 
-modus = input("Server oder Client? (server/client): ").strip().lower()
-
-if modus == "server":
-    start_server()
-elif modus == "client":
-    connect_to_server()
-else:
-    print("Ungültige Eingabe!")
+if __name__ == "__main__":
+    pass  # Die GUI-Logik läuft im menu.py Modul
 
