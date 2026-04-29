@@ -1,3 +1,3 @@
 # schach.py
 
-print("test für Github")
+print("starting Schach...")
