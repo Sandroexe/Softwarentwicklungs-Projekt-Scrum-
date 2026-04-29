@@ -17,47 +17,64 @@ def show_menu():
     
     # Create window
     window = tk.Tk()
-    window.title("CHESS - Mode Selection")
-    window.geometry("300x200")
+    window.title("CHESS")
+    window.geometry("400x300")
     window.resizable(False, False)
+    window.configure(bg="#f0f0f0")
     
     # Title
-    title = tk.Label(window, text="CHESS", font=("Arial", 24, "bold"))
+    title = tk.Label(
+        window,
+        text="CHESS",
+        font=("Arial", 32, "bold"),
+        bg="#f0f0f0",
+        fg="#333333"
+    )
     title.pack(pady=20)
     
-    # Subtitle
-    subtitle = tk.Label(window, text="Select your mode", font=("Arial", 12))
+    # Subtitle/Label
+    subtitle = tk.Label(
+        window,
+        text="Select Game Mode",
+        font=("Arial", 14),
+        bg="#f0f0f0",
+        fg="#666666"
+    )
     subtitle.pack(pady=10)
     
-    # Button frame
-    button_frame = tk.Frame(window)
-    button_frame.pack(pady=20)
+    # Button container
+    button_frame = tk.Frame(window, bg="#f0f0f0")
+    button_frame.pack(pady=30, padx=20, fill=tk.BOTH, expand=True)
     
-    # Server button
-    button_server = tk.Button(
+    # Host button (Server)
+    button_host = tk.Button(
         button_frame,
-        text="🖥️ Server",
+        text="Host Game\n(Server)",
         command=choose_server,
-        width=15,
-        height=2,
-        font=("Arial", 11),
+        font=("Arial", 14, "bold"),
         bg="#4CAF50",
-        fg="white"
+        fg="white",
+        height=4,
+        border=0,
+        cursor="hand2",
+        activebackground="#45a049"
     )
-    button_server.pack(pady=10)
+    button_host.pack(side=tk.LEFT, padx=10, fill=tk.BOTH, expand=True)
     
-    # Client button
-    button_client = tk.Button(
+    # Join button (Client)
+    button_join = tk.Button(
         button_frame,
-        text="👤 Client",
+        text="Join Game\n(Client)",
         command=choose_client,
-        width=15,
-        height=2,
-        font=("Arial", 11),
+        font=("Arial", 14, "bold"),
         bg="#2196F3",
-        fg="white"
+        fg="white",
+        height=4,
+        border=0,
+        cursor="hand2",
+        activebackground="#0b7dda"
     )
-    button_client.pack(pady=10)
+    button_join.pack(side=tk.LEFT, padx=10, fill=tk.BOTH, expand=True)
     
     # Display window
     window.mainloop()
