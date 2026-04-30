@@ -1,4 +1,5 @@
 import tkinter as tk
+import threading
 from connection.server import get_ip_address, start_server
 from gui.game import show_game_window
 
@@ -44,10 +45,19 @@ def show_server_window():
     ip_display.pack(fill=tk.X, padx=20, pady=10)
     
     # Start button
+    def start_game_with_server():
+        """Start server in background and open game window."""
+        window.destroy()
+        # Start server in a background thread so it doesn't block the game window
+        server_thread = threading.Thread(target=start_server, daemon=True)
+        server_thread.start()
+        # Show the game window immediately
+        show_game_window("server")
+    
     button_start = tk.Button(
         window,
         text="Start Server",
-        command=lambda: [window.destroy(), start_server(), show_game_window("server")],
+        command=start_game_with_server,
         font=("Arial", 14, "bold"),
         bg="#4CAF50",
         fg="white",

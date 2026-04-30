@@ -82,19 +82,61 @@ def show_game_window(mode):
             if row == 7:
                 canvas.create_text(x1 + square_size - 5, y1 + square_size - 5, text=chr(97 + col), fill="#666", font=("Arial", 8, "bold"), anchor="se")
     
-    # Add chess pieces (simple representation)
-    pieces = {
-        "white": ["♔", "♕", "♖", "♗", "♘", "♙"],
-        "black": ["♚", "♛", "♜", "♝", "♞", "♟"]
+    # Chess piece symbols
+    piece_symbols = {
+        "pawn_white": "♙",
+        "pawn_black": "♟",
+        "rook_white": "♖",
+        "rook_black": "♜",
+        "knight_white": "♘",
+        "knight_black": "♞",
+        "bishop_white": "♗",
+        "bishop_black": "♝",
+        "queen_white": "♕",
+        "queen_black": "♛",
+        "king_white": "♔",
+        "king_black": "♚"
     }
     
-    # Draw starting position for white
-    for i in range(8):
-        canvas.create_text(i * square_size + 30, 7 * square_size + 30, text="♙", font=("Arial", 28), fill="white")
+    # Draw white pieces (row 1 and 2)
+    # Row 1 (back row): Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook
+    white_back_row = [
+        piece_symbols["rook_white"],
+        piece_symbols["knight_white"],
+        piece_symbols["bishop_white"],
+        piece_symbols["queen_white"],
+        piece_symbols["king_white"],
+        piece_symbols["bishop_white"],
+        piece_symbols["knight_white"],
+        piece_symbols["rook_white"]
+    ]
     
-    # Draw starting position for black
-    for i in range(8):
-        canvas.create_text(i * square_size + 30, square_size + 30, text="♟", font=("Arial", 28), fill="black")
+    for col in range(8):
+        canvas.create_text(col * square_size + 30, 7 * square_size + 30, text=white_back_row[col], font=("Arial", 28), fill="white")
+    
+    # Row 2: White pawns
+    for col in range(8):
+        canvas.create_text(col * square_size + 30, 6 * square_size + 30, text=piece_symbols["pawn_white"], font=("Arial", 28), fill="white")
+    
+    # Draw black pieces (row 8 and 7)
+    # Row 8 (back row): Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook
+    black_back_row = [
+        piece_symbols["rook_black"],
+        piece_symbols["knight_black"],
+        piece_symbols["bishop_black"],
+        piece_symbols["queen_black"],
+        piece_symbols["king_black"],
+        piece_symbols["bishop_black"],
+        piece_symbols["knight_black"],
+        piece_symbols["rook_black"]
+    ]
+    
+    for col in range(8):
+        canvas.create_text(col * square_size + 30, square_size + 30, text=black_back_row[col], font=("Arial", 28), fill="black")
+    
+    # Row 7: Black pawns
+    for col in range(8):
+        canvas.create_text(col * square_size + 30, 2 * square_size + 30, text=piece_symbols["pawn_black"], font=("Arial", 28), fill="black")
     
     # RIGHT SIDE - INFO PANEL
     info_frame = tk.Frame(content_frame, bg="#1a1a1a", width=350)
