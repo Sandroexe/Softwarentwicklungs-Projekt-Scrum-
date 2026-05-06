@@ -11,25 +11,31 @@ except ImportError as e:
     print(f"Fehler beim Laden der GUI-Komponenten: {e}")
     exit(1)
 
+
+
 def start_app():
     try:
-        # Menü anzeigen und Auswahl abfragen
+        # Menü zur mode Auswahl anzeigen bzw. starten
         mode = show_menu()
 
         if mode == "server":
-            print("→ Opening Server window...")
+            print("Starting Server...")
             show_server_window()
+
         elif mode == "client":
-            print("→ Opening Client window...")
+            print("Starting Client...")
             show_client_window()
+
         elif mode is None:
-            print("No selection made!")
+            print("Starting nothing.")
+
         else:
             print(f"Unknown mode selected: {mode}")
 
     except Exception as e:
-        # Fängt unerwartete Fehler während der Laufzeit ab
         print(f"Ein unerwarteter Fehler ist aufgetreten: {e}")
+
+
 
 if __name__ == "__main__":
     start_app()
