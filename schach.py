@@ -1,4 +1,4 @@
-# main.py
+# schach.py
 
 print("Starting Chess application...")
 
